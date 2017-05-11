@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /products
   # GET /products.json
+  authorize_resource
+  
   def index
     @products = Product.all
   end

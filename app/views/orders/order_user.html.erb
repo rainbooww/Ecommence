@@ -1,0 +1,26 @@
+<h1>Orders History:</h1>
+<br>
+<h4>you have <%= current_user.orders.count %> orders placed in the past!</h4>
+<br>
+<div class="row">
+  <% current_user.orders.each do |order| %>
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p><strong>Order ID:</strong> <%= order.id %></p>
+        <p><strong>Order Placed:</strong> <%= order.created_at.strftime("%m/%d/%Y") %></p>
+        <p><strong>Customer:</strong> <%= order.user.name %></p>
+        <p><strong>Order items:</strong> <%= order.order_items %></p>
+      </div>
+      <div class="panel-body">
+
+      </div>
+      <div class="panel-footer">
+        <p><strong>Subtotal:</strong> <%= number_to_currency order.subtotal %></p>
+        <p><strong>Tax:</strong> <%= number_to_currency order.sales_tax %></p>
+        <p><strong>Grand Total:</strong><%= number_to_currency order.grand_total %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

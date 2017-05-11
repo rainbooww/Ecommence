@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
+#hit cancancan of what can do what can not do
+  authorize_resource
   # GET /categories
   # GET /categories.json
   def index
